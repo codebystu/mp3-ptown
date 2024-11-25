@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <title>{% block title %}Home{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <!-- Main Navbar -->
+        <nav class ="purple darken-2">
+            <div class="nav-wrapper">
+            <a href="{{ url_for('views.home') }}" class="brand-logo">DIESEL CITY</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                {% if user.is_authenticated %}
+                <li><a href="{{ url_for('views.home') }}">Whats On</a></li>
+                <li><a href="{{ url_for('views.places') }}">WhereTo Go</a></li>
+                <li><a href="{{ url_for('views.fooddrink') }}">Food & Drink</a></li>
+                <li><a href="{{ url_for('views.myplaces') }}">My Venues</a></li>
+                <li><a href="{{ url_for('views.myevents') }}">My Events</a></li>
+                <li><a href="{{ url_for('views.myfood') }}">My Food</a></li>
+                <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                {% else %}
+                <li><a href="{{ url_for('views.home') }}">Whats On</a></li>
+                <li><a href="{{ url_for('views.places') }}">WhereTo Go</a></li>
+                <li><a href="{{ url_for('views.fooddrink') }}">Food & Drink</a></li>
+                <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+                <li><a href="{{ url_for('auth.signup') }}">Sign Up</a></li>
+                {% endif %}
+            </ul>
+            </div>
+        </nav>
+    <!-- Mobile Collapsed Navbar -->
+        <ul class="sidenav" id="mobile-demo">
+            {% if user.is_authenticated %}
+                <li><a href="{{ url_for('views.home') }}">Whats On</a></li>
+                <li><a href="{{ url_for('views.places') }}">WhereTo Go</a></li>
+                <li><a href="{{ url_for('views.fooddrink') }}">Food & Drink</a></li>
+                <li><a href="{{ url_for('views.myplaces') }}">My Events</a></li>
+                <li><a href="{{ url_for('views.myevents') }}">My Places</a></li>
+                <li><a href="{{ url_for('views.myfood') }}">My Food</a></li>
+                <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                {% else %}
+                <li><a href="{{ url_for('views.home') }}">Whats On</a></li>
+                <li><a href="{{ url_for('views.places') }}">WhereTo Go</a></li>
+                <li><a href="{{ url_for('views.fooddrink') }}">Food & Drink</a></li>
+                <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+                <li><a href="{{ url_for('auth.signup') }}">Sign Up</a></li>
+                {% endif %}
+        </ul>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %} {% for category, message in messages %} {% if category ==
+        'error' %}
+        <div class="white-text red center-align">
+          {{ message }}
+        </div>
+        {% else %}
+        <div class="white-text green center-align">
+          {{ message }}
+        </div>
+        {% endif %} {% endfor %} {% endif %} {% endwith %}
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="page-footer purple darken-4">
+        <div class="footer-copyright">
+          <div class="container">
+          © 2024 Copyright
+          <a class="white-text right" href="https://github.com/codebystu" target="_blank">codebystu</a>
+          </div>
+        </div>
+      </footer>
+          
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

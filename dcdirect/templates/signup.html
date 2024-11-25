@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Signup{% endblock %}
+{% block content %}
+
+
+<h3 class="white-text purple darken-3 center-align">SIGN UP</h3>
+<br>
+<div class="row">
+    <form class="col s12" method="POST">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="enter first name" id="firstName" name="firstName" type="text" class="validate">
+          <label for="firstName">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="enter last name" id="lastName" name="lastName" type="text" class="validate">
+          <label for="lastName">Last Name</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="enter email" id="email" name="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="enter password" id="password1" name="password1" type="password" class="validate">
+          <label for="password1">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="confirm password" id="password2" name="password2" type="password" class="validate">
+          <label for="password2">Confirm Password</label>
+        </div>
+      </div>   
+      <br>
+      <button class="btn waves-effect waves-light" type="submit">Sign Up
+        <i class="material-icons right">send</i>
+      </button>   
+    </form>
+
+    
+ 
+  </div>
+
+{% endblock %}

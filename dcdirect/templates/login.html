@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+
+<h3 class="white-text purple darken-3 center-align">LOG IN</h3>
+<br>
+<div class="row">
+    <form class="col s12" method="POST">
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="enter email" id="email" name="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="enter password" id="password" name="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>  
+      <br>
+      <button class="btn waves-effect waves-light" type="submit">Log In
+        <i class="material-icons right">send</i>
+      </button>   
+    </form>
+  
+  </div>
+{% endblock %}
